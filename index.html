@@ -400,6 +400,44 @@
       url('images/16-map-adler-msk.png') center/cover;
   }
 
+  /* Компактнее все дневные слайды (5-12) на desktop, чтобы влезали в 100vh
+     даже на узком 13" Mac. На mobile свои правила в media query ниже. */
+  @media (min-width: 901px) {
+    .day-content > div > ul.bullets > li {
+      font-size: 15px;
+      padding: 6px 0 6px 22px;
+      line-height: 1.4;
+    }
+    .day-content > div > .card,
+    .day-content > div > .card.deep {
+      padding: 14px 18px;
+    }
+    .day-content {
+      gap: 28px;
+    }
+    .day-header {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+    }
+    .day-num {
+      font-size: 64px;
+    }
+    .day-route {
+      font-size: 26px;
+    }
+    .mini-strip .mini {
+      height: 80px;
+    }
+    .highlight-box {
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+    .highlight-box .text {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
+
   /* Компактнее карточки на слайдах 14 (бюджет) и 15 (действия), чтобы влезло в один экран */
   .bg-flinstones-budget .card {
     padding: 8px 14px !important;
@@ -1137,7 +1175,7 @@
       <div class="card">
         <div class="card-label">Радиусы</div>
         <div class="card-big">~1 200 км</div>
-        <div class="card-text">Роза Поляна, Skypark, Абхазия туда-обратно из Адлера</div>
+        <div class="card-text">Роза Хутор, Абрау-Дюрсо, заезды по серпантину и в Абхазии</div>
       </div>
     </div>
   </section>
@@ -1208,7 +1246,7 @@
               </div>
             </li>
           </ul>
-          <div class="footnote">Бронь №9378131. Заезд 8 мая 14:00 → выезд 9 мая 12:00. Ту же сеть планируем на обратный путь 16 мая.</div>
+          <div class="footnote">Бронь №9378131. Заезд 8 мая 14:00 → выезд 9 мая 12:00. На обратный путь 16 мая — другой отель: Mercure Ростов-на-Дону Центр.</div>
         </div>
       </div>
     </div>
@@ -1532,15 +1570,24 @@
         </ul>
       </div>
       <div>
-        <div class="card coral">
+        <div class="card">
+          <div class="card-label" style="color: #16a34a;">✓ Забронировано</div>
+          <ul class="hotel-list">
+            <li class="hotel-item">
+              <div class="hotel-mini" style="background-image: url('images/hotel-mercure-rostov.webp');"></div>
+              <div class="hotel-info">
+                <div class="hotel-name">Mercure Ростов-на-Дону Центр</div>
+                <div class="hotel-desc">2 номера классических · 1 ночь · 12 699 ₽ · оплачено</div>
+              </div>
+            </li>
+          </ul>
+          <div class="footnote">Заезд 16 мая 15:00 → выезд 17 мая 12:00. Тариф «скидка при раннем бронировании». Ворошиловский пр-т 35/107.</div>
+        </div>
+        <div class="card coral" style="margin-top: 14px;">
           <div class="card-label">Почему 04:00 в воскресенье</div>
-          <div class="card-text" style="color: white; line-height: 1.6;">
+          <div class="card-text" style="color: white; line-height: 1.5;">
             Воскресенье вечером пробки на въезде в Москву беспощадные, плюс возвращающиеся с юга после длинных выходных. Ранний старт — единственный способ уверенно успеть к 18:00.
           </div>
-        </div>
-        <div class="highlight-box">
-          <div class="label">Альтернатива</div>
-          <div class="text">Если 18 мая нет жёсткого «надо в Москве» — растянуть обратный путь на три дня с ночёвкой в Воронеже. Снимет напряжение.</div>
         </div>
       </div>
     </div>
@@ -1581,9 +1628,9 @@
           </div>
         </div>
         <div class="card coral" style="margin-top: 16px;">
-          <div class="card-label">Красный флаг 3 · Бронь</div>
+          <div class="card-label">Красный флаг 3 · Билеты и экскурсии</div>
           <div class="card-text" style="color: white; line-height: 1.5;">
-            12 дней до старта. Май — пик. <strong>Все отели в РФ забронировать до 28 апреля</strong>, Абхазию — до 30 апреля. Иначе цены подскочат на 30–50% или закончится.
+            Все отели забронированы (~160 тыс ₽). Осталось: <strong>билеты на канатки Роза Хутор</strong>, <strong>Новоафонскую пещеру</strong> и <strong>экскурсию в Абрау-Дюрсо</strong>. Купить онлайн до 4 мая — иначе на месте очередь 2-3 часа или мест нет.
           </div>
         </div>
       </div>
@@ -1607,7 +1654,7 @@
         <tr><td>Топливо (~4 500 км · 100 ₽/л)</td><td>65 000 ₽</td><td>70 000 ₽</td></tr>
         <tr><td>Платная М-4 «Дон» (туда-обратно)</td><td>8 000 ₽</td><td>8 000 ₽</td></tr>
         <tr><td>Мойка авто за поездку</td><td>10 000 ₽</td><td>20 000 ₽</td></tr>
-        <tr><td>Отели · 9 ночей × 4 чел <em style="color: #16a34a;">(8 ночей забронировано · ~147 тыс ₽)</em></td><td>200 000 ₽</td><td>290 000 ₽</td></tr>
+        <tr><td>Отели · 9 ночей × 4 чел <em style="color: #16a34a;">(✓ все забронированы · ~159 700 ₽)</em></td><td>200 000 ₽</td><td>290 000 ₽</td></tr>
         <tr><td>Питание · 10 дней × 4 чел</td><td>160 000 ₽</td><td>200 000 ₽</td></tr>
         <tr><td>Развлечения и экскурсии</td><td>40 000 ₽</td><td>60 000 ₽</td></tr>
         <tr><td>Баня Hill1200 «Возрождение» · 12 мая <em style="color: #16a34a;">(забронировано)</em></td><td>45 000 ₽</td><td>45 000 ₽</td></tr>
@@ -1633,7 +1680,7 @@
     <h2 class="slide-title">Что делаем прямо сейчас</h2>
     <div class="grid-2">
       <div class="card">
-        <div class="card-label" style="color: #16a34a;">✓ Уже сделано</div>
+        <div class="card-label" style="color: #16a34a;">✓ Все отели и баня</div>
         <ul class="bullets" style="margin-top: 10px;">
           <li>Don-Plaza · Ростов · 8 мая · 15 600 ₽</li>
           <li>Marsel · Геленджик · 9–11 мая · 42 000 ₽</li>
@@ -1641,13 +1688,13 @@
           <li>HILLS POLYANA · Красная Поляна · 12–14 мая · 47 600 ₽</li>
           <li>Garuda Boutique · Сухум · 14 мая · ~12 500 ₽</li>
           <li>Космос Адлер · 15 мая · 11 700 ₽</li>
+          <li>Mercure Ростов-на-Дону · 16 мая · 12 699 ₽</li>
           <li>Баня Hill1200 «Возрождение» · 12 мая 18–21 · 45 000 ₽</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-label" style="color: var(--c-coral);">Эта неделя · до 4 мая</div>
         <ul class="bullets" style="margin-top: 10px;">
-          <li>Забронировать Don-Plaza на обратный путь — 16 мая (последняя ночёвка)</li>
           <li>Забронировать экскурсию в Абрау-Дюрсо на 9 мая</li>
           <li>Купить билеты онлайн: канатки Роза Хутор до Розы Пик (13 мая), Новоафонская пещера (15 мая)</li>
         </ul>
@@ -1683,7 +1730,7 @@
       <span class="accent">Один общий опыт.</span>
     </h1>
     <div class="subtitle" style="margin-top: 50px;">
-      Снег на Розе Пик, бирюза озера Рица, Скала Парус, Гагрипш 1903 года, винные подвалы Абрау-Дюрсо, банджи в Skypark, сосновая роща Пицунды.
+      Снег на Розе Пик, бирюза озера Рица, Скала Парус, Гагрипш 1903 года, винные подвалы Абрау-Дюрсо, горная баня в Hill1200, сосновая роща Пицунды.
     </div>
     <div class="meta">
       <div class="meta-item">
