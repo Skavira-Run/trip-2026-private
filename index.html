@@ -13,6 +13,9 @@
     --c-sea: #088395;
     --c-sand: #f4ebd9;
     --c-cream: #faf6ee;
+    --c-warm-card: #faf2dd;
+    --c-warm-card-rgba: 250, 242, 221;
+    --c-green-soft: #e6efd6;
     --c-coral: #ff6b35;
     --c-coral-soft: #ffd0bd;
     --c-mint: #14b8a6;
@@ -128,7 +131,7 @@
   .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 22px; flex: 1; }
 
   .card {
-    background: white;
+    background: var(--c-warm-card);
     border-radius: 14px;
     padding: 28px 32px;
     border: 1px solid var(--c-line);
@@ -292,7 +295,7 @@
     justify-content: center;
   }
   .route-stop {
-    background: white;
+    background: var(--c-warm-card);
     border: 2px solid var(--c-deep);
     padding: 14px 20px;
     border-radius: 12px;
@@ -314,7 +317,7 @@
     font-weight: 700;
   }
   .slide.bg-dark .route-stop {
-    background: rgba(255,255,255,0.96);
+    background: rgba(var(--c-warm-card-rgba), 0.97);
     box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   }
   .slide.bg-dark .route-stop .city { color: var(--c-deep); }
@@ -397,6 +400,49 @@
       url('images/16-map-adler-msk.png') center/cover;
   }
 
+  /* Компактнее карточки на слайдах 14 (бюджет) и 15 (действия), чтобы влезло в один экран */
+  .bg-flinstones-budget .card {
+    padding: 8px 14px !important;
+  }
+  .bg-flinstones-budget table.budget {
+    font-size: 13px;
+  }
+  .bg-flinstones-budget table.budget th {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .bg-flinstones-budget table.budget td {
+    padding: 6px 10px;
+  }
+  .bg-flinstones-budget table.budget tr.total {
+    font-size: 14px;
+  }
+  .bg-flinstones-budget table.budget tr.total td {
+    padding: 9px 10px;
+  }
+  .bg-flinstones-budget h2.slide-title {
+    margin-bottom: 16px;
+  }
+
+  .bg-flinstones-action .card {
+    padding: 14px 18px !important;
+  }
+  .bg-flinstones-action .grid-2 {
+    gap: 14px;
+  }
+  .bg-flinstones-action ul.bullets li {
+    font-size: 14px;
+    padding: 5px 0 5px 20px;
+    line-height: 1.35;
+  }
+  .bg-flinstones-action .card-label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  .bg-flinstones-action h2.slide-title {
+    margin-bottom: 16px;
+  }
+
   /* Компактные мини-карточки на слайде маршрута, чтобы карта просвечивала.
      flex: none — иначе grid-3 растягивается на всё свободное вертикальное место */
   .bg-map-msk-gagra .grid-3 {
@@ -408,7 +454,7 @@
   }
   .bg-map-msk-gagra .grid-3 .card {
     padding: 12px 16px;
-    background: rgba(255,255,255,0.88) !important;
+    background: rgba(var(--c-warm-card-rgba), 0.9) !important;
     align-self: start;
   }
   .bg-map-msk-gagra .grid-3 .card .card-label {
@@ -482,7 +528,7 @@
   /* На фоновых слайдах — карточки чуть прозрачнее, с тенью посильнее.
      Внутри карточек цвет текста явно тёмный, чтобы не наследовался белый от .slide.bg-dark */
   .slide.bg-dark .card {
-    background: rgba(255,255,255,0.96);
+    background: rgba(var(--c-warm-card-rgba), 0.97);
     box-shadow: 0 8px 28px rgba(0,0,0,0.25);
     color: var(--c-text);
   }
@@ -1361,7 +1407,7 @@
         <div class="day-route">Красная Поляна → Абхазия · Гагра, Пицунда, Рица</div>
         <div class="day-date">Четверг, 14 мая</div>
         <div class="day-stats">
-          <div class="stat"><strong>Выезд 06:30</strong> из HILLS POLYANA — до пика на Псоу</div>
+          <div class="stat"><strong>Выезд 05:00</strong> из HILLS POLYANA — раньше пиков на М-4 и Псоу</div>
           <div class="stat"><strong>~270 км</strong> от Красной Поляны до Сухума через Гагру и Рицу</div>
         </div>
       </div>
@@ -1369,15 +1415,15 @@
     <div class="day-content">
       <div>
         <ul class="bullets">
-          <li>06:30 — выезд из Красной Поляны (расчёт-выезд из HILLS POLYANA до 12:00, делаем сразу)</li>
-          <li>~08:00 — КПП Псоу. Сразу за границей покупаем местную страховку ОСАГО (~3 000 ₽)</li>
-          <li>09:00 Гагра · завтрак в легендарном «Гагрипш» (1903), колоннада, крепость Абаата</li>
-          <li>11:00 Пицунда · реликтовая сосновая роща, мыс с маяком, чистейшие пляжи</li>
-          <li>13:00 — выезд в горы к озеру Рица через Юпшарский каньон</li>
+          <li>05:00 — выезд из HILLS POLYANA (расчёт-выезд бесплатный до 12:00, делаем сразу)</li>
+          <li>~06:30 — КПП Псоу. Сразу за границей покупаем местную страховку ОСАГО (~3 000 ₽)</li>
+          <li>07:30 Гагра · завтрак в легендарном «Гагрипш» (1903), колоннада, крепость Абаата</li>
+          <li>10:00 Пицунда · реликтовая сосновая роща, мыс с маяком, чистейшие пляжи</li>
+          <li>12:00 — выезд в горы к озеру Рица через Юпшарский каньон</li>
           <li>Гегский водопад · 6 км по грунтовке (Прадо проедет, седан — нет)</li>
-          <li>15:00 — на озере Рица, высота 950 м, бирюза в окружении гор</li>
-          <li>17:00 — спуск, выезд по трассе на Сухум</li>
-          <li>~18:30 — Сухум, заселение в Garuda Boutique Hotel</li>
+          <li>14:00 — на озере Рица, высота 950 м, бирюза в окружении гор</li>
+          <li>16:00 — спуск, выезд по трассе на Сухум</li>
+          <li>~18:00 — Сухум, заселение в Garuda Boutique Hotel</li>
         </ul>
       </div>
       <div>
