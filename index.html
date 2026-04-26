@@ -9,7 +9,7 @@
 <title>Сочи и Абхазия — семейное путешествие, 8–17 мая 2026</title>
 <!-- Предзагрузка титульной картинки — первое, что видит зритель -->
 <link rel="preload" as="image" href="images/01-hero.jpg">
-<link rel="preload" as="image" href="images/15-map-msk-gagra.png">
+<link rel="preload" as="image" href="images/15-map-route.jpg">
 <style>
   :root {
     --c-deep: #0a4d68;
@@ -94,12 +94,12 @@
   .title-slide.with-bg-hero {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.78) 0%, rgba(8,131,149,0.55) 60%, rgba(30,165,142,0.5) 100%),
-      url('images/01-hero.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .title-slide.with-bg-finale {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.85) 0%, rgba(224,120,86,0.55) 100%),
-      url('images/12-finale.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .title-slide .eyebrow { color: var(--c-coral-soft); }
   .title-slide h1.deck-title { color: white; max-width: 1100px; }
@@ -390,17 +390,13 @@
   .bg-flinstones-fam {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.78) 0%, rgba(255,107,53,0.55) 100%),
-      url('images/17-flintstones-family.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
-  .bg-map-msk-gagra {
-    background:
-      linear-gradient(135deg, rgba(10,77,104,0.55) 0%, rgba(20,184,166,0.45) 100%),
-      url('images/15-map-msk-gagra.png') center/cover;
-  }
+  .bg-map-msk-gagra,
   .bg-map-adler-msk {
     background:
-      linear-gradient(135deg, rgba(10,77,104,0.55) 0%, rgba(255,107,53,0.4) 100%),
-      url('images/16-map-adler-msk.png') center/cover;
+      linear-gradient(135deg, rgba(10,77,104,0.45) 0%, rgba(20,184,166,0.3) 100%),
+      var(--bg-image, none) center/cover;
   }
 
   /* Компактнее все дневные слайды (5-12) на desktop, чтобы влезали в 100vh
@@ -513,57 +509,57 @@
   .bg-prado {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.85) 0%, rgba(8,131,149,0.6) 100%),
-      url('images/13-prado-2025.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-rostov {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.85) 0%, rgba(10,77,104,0.5) 100%),
-      url('images/03-rostov.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-skala-parus {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.85) 0%, rgba(10,77,104,0.45) 100%),
-      url('images/04-skala-parus.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-serpentine {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.82) 0%, rgba(10,77,104,0.5) 100%),
-      url('images/05-serpentine.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-roza-pik {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.8) 0%, rgba(10,77,104,0.4) 100%),
-      url('images/06-roza-pik.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-ritsa {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.75) 0%, rgba(10,77,104,0.4) 100%),
-      url('images/07-ritsa.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-novy-afon {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.85) 0%, rgba(10,77,104,0.5) 100%),
-      url('images/09-novy-afon.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-skypark {
     background:
       linear-gradient(180deg, rgba(10,77,104,0.78) 0%, rgba(10,77,104,0.5) 100%),
-      url('images/10-sochi-skypark.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-flinstones-budget {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.85) 0%, rgba(245,158,11,0.55) 100%),
-      url('images/18-flintstones-budget.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-flinstones-action {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.82) 0%, rgba(255,107,53,0.55) 100%),
-      url('images/19-flintstones-action.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
   .bg-flinstones-docs {
     background:
       linear-gradient(135deg, rgba(10,77,104,0.85) 0%, rgba(236,72,153,0.45) 100%),
-      url('images/20-flintstones-docs.jpg') center/cover;
+      var(--bg-image, none) center/cover;
   }
 
   /* На фоновых слайдах — карточки чуть прозрачнее, с тенью посильнее.
@@ -1776,6 +1772,46 @@
   const navEl = document.querySelector('.nav');
   const progressEl = document.querySelector('.progress');
 
+  // Карта класс-слайда → путь к картинке для lazy loading
+  const BG_MAP = {
+    'with-bg-hero':         'images/01-hero.jpg',
+    'with-bg-finale':       'images/12-finale.jpg',
+    'bg-flinstones-fam':    'images/17-flintstones-family.jpg',
+    'bg-map-msk-gagra':     'images/15-map-route.jpg',
+    'bg-map-adler-msk':     'images/15-map-route.jpg',
+    'bg-prado':             'images/13-prado-2025.jpg',
+    'bg-rostov':            'images/03-rostov.jpg',
+    'bg-skala-parus':       'images/04-skala-parus.jpg',
+    'bg-serpentine':        'images/05-serpentine.jpg',
+    'bg-skypark':           'images/10-sochi-skypark.jpg',
+    'bg-roza-pik':          'images/06-roza-pik.jpg',
+    'bg-ritsa':             'images/07-ritsa.jpg',
+    'bg-novy-afon':         'images/09-novy-afon.jpg',
+    'bg-flinstones-docs':   'images/20-flintstones-docs.jpg',
+    'bg-flinstones-budget': 'images/18-flintstones-budget.jpg',
+    'bg-flinstones-action': 'images/19-flintstones-action.jpg',
+  };
+
+  function getBgPath(slide) {
+    for (const cls of slide.classList) {
+      if (BG_MAP[cls]) return BG_MAP[cls];
+    }
+    return null;
+  }
+
+  const loaded = new Set();
+  function preload(path) {
+    if (!path || loaded.has(path)) return;
+    loaded.add(path);
+    const img = new Image();
+    img.src = path;
+  }
+
+  function applyBg(slide) {
+    const path = getBgPath(slide);
+    if (path) slide.style.setProperty('--bg-image', `url("${path}")`);
+  }
+
   function show(idx) {
     slides.forEach((s, i) => s.classList.toggle('active', i === idx));
     document.getElementById('currentNum').textContent = idx + 1;
@@ -1785,6 +1821,12 @@
     const isDark = slides[idx].classList.contains('bg-dark') || slides[idx].classList.contains('dark');
     navEl.classList.toggle('on-dark', isDark);
     progressEl.classList.toggle('on-dark', isDark);
+
+    // Lazy: ставим фон только активному и предзагружаем соседей
+    applyBg(slides[idx]);
+    preload(getBgPath(slides[idx]));
+    if (idx + 1 < total) { applyBg(slides[idx + 1]); preload(getBgPath(slides[idx + 1])); }
+    if (idx - 1 >= 0)    { applyBg(slides[idx - 1]); preload(getBgPath(slides[idx - 1])); }
   }
 
   function changeSlide(d) {
